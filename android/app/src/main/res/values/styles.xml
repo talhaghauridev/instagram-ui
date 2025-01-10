@@ -2,13 +2,13 @@
 <resources>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
-        <!-- Remove the splash screen by setting a transparent background -->
+        <!-- Transparent background to avoid any splash -->
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <!-- Theme applied to the Android Window as soon as the process has started -->
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
-        <!-- Optional: Use a plain background to avoid any UI glitch -->
+        <!-- Plain white background for your app -->
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 </resources>

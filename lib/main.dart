@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:instagram_ui/screens/Auth/Login/login_screen.dart';
 import 'package:instagram_ui/screens/Auth/Signup/signup_screen.dart';
 import 'package:instagram_ui/screens/Splash/splash_screen.dart';
+import 'constants/constants.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -13,13 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      initialRoute: "/",
       routes: {
-        "/": (context) => HomeScreen(),
-        "/login": (context) => LoginScreen(),
-        "/signup": (context) => SignupScreen()
+        "/": (context) => const SplashScreen(),
+        AppRoutes.home: (context) => HomeScreen(),
+        AppRoutes.auth.login: (context) => LoginScreen(),
+        AppRoutes.auth.signup: (context) => SignupScreen()
       },
     );
   }
@@ -42,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/signup');
+                Navigator.pushReplacementNamed(context, '/signup');
               },
               child: Text('Go to Signup'),
             ),

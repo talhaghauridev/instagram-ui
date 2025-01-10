@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:instagram_ui/constants/images_constants.dart';
+import 'package:instagram_ui/constants/constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,11 +14,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(Duration(seconds: 3), () {
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacementNamed(context, "/login");
-      });
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(Duration(seconds: 3));
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, AppRoutes.home);
+      }
     });
   }
 
@@ -31,10 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              ImagesConstants.instagramIcon,
+              AppImages.instagramIcon,
             ),
             const SizedBox(height: 10),
-            Image.asset(ImagesConstants.splashLogo),
+            Image.asset(AppImages.splashLogo),
           ],
         ),
       ),
