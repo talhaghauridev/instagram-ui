@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_ui/core/theme/app_colors.dart';
+import 'package:instagram_ui/core/theme/app_theme.dart';
 import 'package:instagram_ui/screens/Auth/Login/login_screen.dart';
 import 'package:instagram_ui/screens/Auth/Signup/signup_screen.dart';
+import 'package:instagram_ui/screens/Home/home_screen.dart';
 import 'package:instagram_ui/screens/Splash/splash_screen.dart';
 import 'constants/constants.dart';
 
@@ -15,7 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
@@ -24,34 +29,6 @@ class MyApp extends StatelessWidget {
         AppRoutes.auth.login: (context) => LoginScreen(),
         AppRoutes.auth.signup: (context) => SignupScreen()
       },
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Home')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: Text('Go to Login'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/signup');
-              },
-              child: Text('Go to Signup'),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

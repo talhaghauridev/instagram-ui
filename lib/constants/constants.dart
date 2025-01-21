@@ -13,3 +13,7 @@ class _AuthRoutes {
   final login = '/login';
   final signup = '/signup';
 }
+
+abstract class AppFonts {
+  static const String inter = "Regular";
+}

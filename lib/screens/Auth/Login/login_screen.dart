@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_ui/constants/constants.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Back to Home'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(AppImages.splashLogo),
+            Image.asset(AppImages.splashLogo),
+          ],
         ),
       ),
     );

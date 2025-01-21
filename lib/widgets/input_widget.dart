@@ -1,6 +1,5 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:instagram_ui/constants/constants.dart';
 
 class CustomInput extends StatefulWidget {
   final String? labelText;
@@ -31,7 +30,7 @@ class CustomInput extends StatefulWidget {
     this.onChanged,
     this.borderColor,
     this.focusedBorderColor,
-    this.borderRadius = 8.0,
+    this.borderRadius = 5,
     this.fillColor,
     this.filled = true,
   }) : super(key: key);
@@ -64,16 +63,21 @@ class _CustomInputState extends State<CustomInput> {
             ),
           ),
         if (widget.labelText != null) const SizedBox(height: 8),
-        Container(
-          height: 46,
-          child: TextFormField(
+        SizedBox(
+          width: double.infinity,
+          height: 48,
+          child: TextField(
+            cursorColor: Colors.white,
             controller: widget.controller,
             keyboardType: widget.keyboardType,
             obscureText: _isPasswordVisible,
-            validator: widget.validator,
             onChanged: widget.onChanged,
             decoration: InputDecoration(
               hintText: widget.hintText,
+              hintStyle: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                  fontFamily: AppFonts.inter),
               prefixIcon:
                   widget.leftIcon != null ? Icon(widget.leftIcon) : null,
               suffixIcon: widget.obscureText
@@ -90,18 +94,19 @@ class _CustomInputState extends State<CustomInput> {
                       },
                     )
                   : (widget.rightIcon != null ? Icon(widget.rightIcon) : null),
-              filled: widget.filled,
-              fillColor: widget.fillColor ?? Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius),
-                borderSide:
-                    BorderSide(color: widget.borderColor ?? Colors.grey),
-              ),
+              filled: true,
+              fillColor: widget.fillColor ?? const Color(0xFF121212),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.borderRadius),
                 borderSide: BorderSide(
                     color: widget.focusedBorderColor ??
                         Theme.of(context).primaryColor),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+                borderSide: BorderSide(
+                    color: widget.borderColor ?? Colors.transparent,
+                    style: BorderStyle.solid),
               ),
             ),
           ),
